@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type 23 Times!</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #ff4081;
+    }
+    textarea {
+      width: 90%;
+      height: 150px;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      margin-top: 20px;
+      resize: none;
+    }
+    #count {
+      margin-top: 15px;
+      font-size: 18px;
+      color: #0f0;
+    }
+    #linkContainer {
+      display: none;
+      margin-top: 30px;
+    }
+    a {
+      background: #ff4081;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Write: "Reetannsh i love you" 23 Times</h1>
+  <textarea id="inputArea" placeholder="Start typing here..."></textarea>
+  <div id="count">0 / 23 completed</div>
+
+  <div id="linkContainer">
+    <a href="https://reetanshxjain.github.io/Reetanshkisimran/" target="_blank">Click to See the Surprise ❤️</a>
+  </div>
+
+  <script>
+    const inputArea = document.getElementById("inputArea");
+    const countDisplay = document.getElementById("count");
+    const linkContainer = document.getElementById("linkContainer");
+
+    inputArea.addEventListener("input", () => {
+      const text = inputArea.value.trim();
+      const phrases = text.match(/Reetannsh i love you/gi) || [];
+      const count = phrases.length;
+
+      countDisplay.textContent = `${count} / 23 completed`;
+
+      if (count >= 23) {
+        linkContainer.style.display = "block";
+      } else {
+        linkContainer.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
