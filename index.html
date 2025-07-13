@@ -59,9 +59,10 @@
     const linkContainer = document.getElementById("linkContainer");
 
     inputArea.addEventListener("input", () => {
-      const text = inputArea.value.trim();
-      const phrases = text.match(/Reetannsh i love you/gi) || [];
-      const count = phrases.length;
+      const text = inputArea.value;
+      // Count how many exact times "Reetannsh i love you" appears (case-insensitive)
+      const matches = text.match(/Reetannsh i love you/gi);
+      const count = matches ? matches.length : 0;
 
       countDisplay.textContent = `${count} / 23 completed`;
 
