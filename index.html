@@ -66,9 +66,9 @@
 </head>
 <body>
 
-  <h1>Write "Reetansh i love you" 23 times 💖 (No copy-paste!)</h1>
+  <h1>Write "Reetansh i love you" 23 times 💖<br>(Copy-Paste is totally blocked!)</h1>
 
-  <textarea id="inputBox" placeholder='Start typing... no pasting allowed!'></textarea>
+  <textarea id="inputBox" placeholder='Start typing... with your heart 🫶'></textarea>
   <div id="count">0 / 23</div>
 
   <div id="linkBox">
@@ -82,12 +82,24 @@
     const countDisplay = document.getElementById("count");
     const linkBox = document.getElementById("linkBox");
 
-    // Block copy-paste
+    // 🚫 Block right click
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    // 🚫 Block paste from mouse, keyboard & mobile
     inputBox.addEventListener("paste", (e) => {
       e.preventDefault();
-      alert("No cheating! Type it with love 💘");
+      alert("No cheating! Type it with love ❤️");
     });
 
+    // 🚫 Block keyboard shortcuts like Ctrl+V or Cmd+V
+    inputBox.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'v' || e.key === 'V')) {
+        e.preventDefault();
+        alert("Paste nahi chalega yaha 😤 Type kar!");
+      }
+    });
+
+    // ✨ Count the phrases correctly
     inputBox.addEventListener("input", () => {
       const text = inputBox.value.toLowerCase().replace(/\s+/g, " ").trim();
       const words = text.split(" ");
@@ -100,7 +112,7 @@
           words[i + 3] === "you"
         ) {
           count++;
-          i += 3;
+          i += 3; // skip next 3 to prevent overlapping
         }
       }
 
