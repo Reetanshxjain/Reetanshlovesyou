@@ -83,12 +83,27 @@
     const linkBox = document.getElementById("linkBox");
 
     inputBox.addEventListener("input", () => {
-      const text = inputBox.value;
-      const matchCount = (text.match(/Reetansh i love you/gi) || []).length;
+      // Normalize input (remove extra spaces, convert to lowercase)
+      const text = inputBox.value.toLowerCase().replace(/\s+/g, " ").trim();
 
-      countDisplay.textContent = `${matchCount} / 23`;
+      // Split the text into words and reconstruct phrases
+      const words = text.split(" ");
+      let count = 0;
+      for (let i = 0; i < words.length - 2; i++) {
+        if (
+          words[i] === "reetansh" &&
+          words[i + 1] === "i" &&
+          words[i + 2] === "love" &&
+          words[i + 3] === "you"
+        ) {
+          count++;
+          i += 3; // Skip to next set to avoid overlapping
+        }
+      }
 
-      if (matchCount === 23) {
+      countDisplay.textContent = `${count} / 23`;
+
+      if (count === 23) {
         linkBox.style.display = "block";
       } else {
         linkBox.style.display = "none";
