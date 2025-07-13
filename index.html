@@ -2,74 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Type 23 Times!</title>
+  <title>Say It 23 Times 💌</title>
   <style>
     body {
-      background-color: #111;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
+      background-color: #0e0e0e;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
       text-align: center;
-      padding: 40px;
     }
+
     h1 {
-      color: #ff4081;
+      color: #ff5c8a;
+      font-size: 2em;
     }
+
     textarea {
       width: 90%;
-      height: 150px;
-      font-size: 16px;
+      max-width: 600px;
+      height: 200px;
       padding: 10px;
-      border-radius: 10px;
+      font-size: 16px;
       border: none;
-      margin-top: 20px;
+      border-radius: 10px;
+      background-color: #1a1a1a;
+      color: white;
       resize: none;
+      margin-top: 20px;
     }
+
     #count {
       margin-top: 15px;
-      font-size: 18px;
-      color: #0f0;
+      font-size: 1.2em;
+      color: #ff91a4;
     }
-    #linkContainer {
-      display: none;
+
+    #linkBox {
       margin-top: 30px;
+      display: none;
     }
+
     a {
-      background: #ff4081;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 10px;
-      text-decoration: none;
+      color: #00ffcc;
       font-weight: bold;
+      font-size: 1.2em;
+      text-decoration: none;
+      border: 2px solid #00ffcc;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #00ffcc;
+      color: black;
     }
   </style>
 </head>
 <body>
 
-  <h1>Write: "Reetannsh i love you" 23 Times</h1>
-  <textarea id="inputArea" placeholder="Start typing here..."></textarea>
-  <div id="count">0 / 23 completed</div>
+  <h1>Write "Reetansh i love you" 23 times 💖</h1>
 
-  <div id="linkContainer">
-    <a href="https://reetanshxjain.github.io/Reetanshkisimran/" target="_blank">Click to See the Surprise ❤️</a>
+  <textarea id="inputBox" placeholder='Start writing...'></textarea>
+  <div id="count">0 / 23</div>
+
+  <div id="linkBox">
+    <a href="https://reetanshxjain.github.io/Reetanshkisimran/" target="_blank">
+      You did it! Click here to visit 💕
+    </a>
   </div>
 
   <script>
-    const inputArea = document.getElementById("inputArea");
+    const inputBox = document.getElementById("inputBox");
     const countDisplay = document.getElementById("count");
-    const linkContainer = document.getElementById("linkContainer");
+    const linkBox = document.getElementById("linkBox");
 
-    inputArea.addEventListener("input", () => {
-      const text = inputArea.value;
-      // Count how many exact times "Reetannsh i love you" appears (case-insensitive)
-      const matches = text.match(/Reetannsh i love you/gi);
-      const count = matches ? matches.length : 0;
+    inputBox.addEventListener("input", () => {
+      const text = inputBox.value;
+      const matchCount = (text.match(/Reetansh i love you/gi) || []).length;
 
-      countDisplay.textContent = `${count} / 23 completed`;
+      countDisplay.textContent = `${matchCount} / 23`;
 
-      if (count >= 23) {
-        linkContainer.style.display = "block";
+      if (matchCount === 23) {
+        linkBox.style.display = "block";
       } else {
-        linkContainer.style.display = "none";
+        linkBox.style.display = "none";
       }
     });
   </script>
